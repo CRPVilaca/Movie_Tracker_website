@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <img src="{% static 'title1.png' %}"  width="200" height="200">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Movie Tracker</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'title1.png' %}">
+</head>
+<body>
+    <form action="{% url 'movie_search' %}" method="GET">
+       
+        <select name="year_filter">
+            <option value="">All Years</option>
+            {% for year in years %}
+                <option value="{{ year }}" {% if year == year_filter %}selected{% endif %}>{{ year }}</option>
+            {% endfor %}
+        </select>
+
+        
+        <select name="genre_filter">
+            <option value="">All Genres</option>
+            {% for genre in genres %}
+                <option value="{{ genre }}" {% if genre == genre_filter %}selected{% endif %}>{{ genre }}</option>
+            {% endfor %}
+        </select>
+
+        
+        <input type="text" name="title_filter" placeholder="Movie Title" value="{{ title_filter }}">
+
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+
+    
+    <table>
+        <thead>
+            <tr>
+               
+                <th>Title</th>
+                <th>Year</th>
+                <th>Genre</th>
+                <th>Country</th>
+                <th>Directors</th>
+                <th>Rating</th>
+                <th>Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in movies %}
+                <tr>
+                 
+                    <td>{{ movie.title }}</td>
+                    <td>{{ movie.year }}</td>
+                    <td>{{ movie.genre }}</td>
+                    <td>{{ movie.country }}</td>
+                    <td>{{ movie.directors }}</td>
+                    <td>{{ movie.rating }}</td>
+                    <td>{{ movie.duration }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
