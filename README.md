@@ -29,9 +29,12 @@ To get started with the Movie Search App, follow these steps:
   Open your web browser and go to http://localhost:8000/ to access the Movie Tracker App.
   ```
 
-***Features***
+**Features**
+
+
 Search for movies by year, genre, or title.
 Filter search results based on user-selected criteria.
 Easily navigate through search results with a user-friendly interface.
 
-***Screenshots***
+**Screenshots**
+
